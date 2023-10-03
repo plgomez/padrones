@@ -38,7 +38,7 @@ for cargos in datos.iter('cargos_agente'):
         #print cargos[17].text
 
     agente = cargos[1].text.split(",")
-    agente_nombre = agente[1].title() + " "+ agente[0] + " (DNI Nº "+ cargos[5].text[3:-2] + ")".strip()
+    agente_nombre = f"{agente[1].title()} {agente[0]}   (DNI Nº  {cargos[5].text[3:-2]}  )".strip()
     print(agente_nombre)
     cuil = cargos[5].text
     cargo = cargos[11].text[:-1]
@@ -59,6 +59,6 @@ for cargos in datos.iter('cargos_agente'):
     caracter = cargos[9].text
     dependencia = cargos[10].text
     if caracter != "BECA":
-        fila = agente_nombre + "\t " + cuil + "\t " +  cargo + "\t" + dedicacion + "\t" + caracter + "\t" + en_licencia + "\t" + dependencia + "\n"
+        fila = f"{agente_nombre} \t {cuil} \t  {cargo} \t {dedicacion}   \t  {caracter}  \t  {en_licencia}  \t {dependencia} \n"
         salida.write(fila)    
 salida.close()
